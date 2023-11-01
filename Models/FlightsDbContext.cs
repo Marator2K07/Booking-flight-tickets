@@ -20,6 +20,14 @@ namespace ASP_MVC_Project.Models
                 new Role { Id = 1, Name = "Standart" },
                 new Role { Id = 2, Name = "Administrator" }
             );
+            modelBuilder.Entity<User>().HasData(
+                new User {
+                    Id = 1, Name = "Administrator",
+                    Surname = "Administrator", DocumentNumber = "0000",
+                    Login = "Admin", Password = "12345",
+                    RoleId = 2, Airtickets = new List<Airticket>() 
+                }
+            );
         }
     }
 }
