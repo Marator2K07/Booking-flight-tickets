@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ASP_MVC_Project.Models.InfoUserModel
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    User currentUser = null;
+    string currentUserStrFormat = HttpContextAccessor.HttpContext.Session.GetString("User");
+    if (currentUserStrFormat != null)
+    {
+        string[] userFields = currentUserStrFormat.Split(':');
+        currentUser = new User
+        {
+            Id = int.Parse(userFields[0]),
+            Name = userFields[1],
+            Surname = userFields[2],
+            DocumentNumber = userFields[3],
+            Login = userFields[4],
+            Password = userFields[5],
+            RoleId = int.Parse(userFields[6])                   
+        };
+    }
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h3 class="display-4">Welcome to user page</h3>
+    <div>
+        @{
+            if (currentUser != null)
+            {
+                <p>User id: @currentUser.Id</p>
+                <p>User name: @currentUser.Name</p>
+                <p>User surname: @currentUser.Surname</p>
+                <p>User document: @currentUser.DocumentNumber</p>
+                <p>User login: @currentUser.Login</p>
+                <p>User password: @currentUser.Password</p>
+
+                if (currentUser.RoleId == 2)
+                {
+
+                }
+
+            }
+            else
+            {
+                <p>Что-то пошло не так, нет данных...</p>
+            }
+        }
+
+        <a asp-action="LogOut" asp-controller="Account" asp-anti-forgery="true">
+            <input type="submit" value="Выход из аккаунта" />
+        </a>
+    </div>
 </div>
+
+
+
