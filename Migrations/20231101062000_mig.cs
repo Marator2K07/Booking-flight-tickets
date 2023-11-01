@@ -118,6 +118,11 @@ namespace ASP_MVC_Project.Migrations
                     { 2, "Administrator" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "DocumentNumber", "Login", "Name", "Password", "RoleId", "Surname" },
+                values: new object[] { 1, "0000", "Admin", "Administrator", "12345", 2, "Administrator" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Airlines_ScheduleId",
                 table: "Airlines",

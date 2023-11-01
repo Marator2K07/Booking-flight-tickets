@@ -152,6 +152,18 @@ namespace ASP_MVC_Project.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DocumentNumber = "0000",
+                            Login = "Admin",
+                            Name = "Administrator",
+                            Password = "12345",
+                            RoleId = 2,
+                            Surname = "Administrator"
+                        });
                 });
 
             modelBuilder.Entity("ASP_MVC_Project.Models.Airline", b =>
