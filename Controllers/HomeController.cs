@@ -1,4 +1,5 @@
 ﻿using ASP_MVC_Project.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -13,8 +14,13 @@ namespace ASP_MVC_Project.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        [Authorize]
+        public IActionResult Index(User user)
         {
+            if (user.Id != 0)
+            {
+                HttpContext.Session.SetString("User", user.ToString());
+            }
             return View();
         }
 
