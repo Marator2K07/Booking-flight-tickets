@@ -13,5 +13,12 @@ namespace ASP_MVC_Project.Models
         public virtual int RoleId { get; set; }
         public virtual Role Role { get; set; }
         public virtual ICollection<Airticket> Airtickets { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Id}:{Name}:{Surname}:{DocumentNumber}" +
+                $":{Login}:{Password}:{RoleId}";
+        }
     }
+
 }
