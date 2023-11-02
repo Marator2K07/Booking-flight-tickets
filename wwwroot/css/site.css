@@ -1,11 +1,11 @@
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -19,4 +19,40 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.header {
+    font: 700 33px COMIC SANS MS;
+    padding: 11px;
+    background: linear-gradient(to right, black, white);
+    color: indianred;
+    border-left: 10px solid indianred;
+}
+
+.back {
+    font: 700 22px COMIC SANS MS;
+    background: linear-gradient(to right, black, white);
+    padding: 22px;
+    color: indianred;
+    border-left: 10px solid indianred;
+}
+
+.back table {
+    font: 700 22px COMIC SANS MS;
+    background: linear-gradient(to right, black, white);
+    padding: 22px;
+    color: indianred;
+    border-left: 10px solid indianred;
+}
+
+
+.back input[type=submit] {
+    padding:5px 15px; 
+    background: black; 
+    border-left: 10px solid indianred;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    color: indianred;
+    border-radius: 5px; 
+    margin: 7px;
 }
