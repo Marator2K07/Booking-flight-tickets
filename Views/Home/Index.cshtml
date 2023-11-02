@@ -1,5 +1,4 @@
-﻿@model ASP_MVC_Project.Models.InfoUserModel
-@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     User currentUser = null;
@@ -19,10 +18,12 @@
         };
     }
 }
+<div class="header">
+    <h4 class="display-4">Welcome to user page</h4>
+</div>
 
-<div class="text-center">
-    <h3 class="display-4">Welcome to user page</h3>
-    <div>
+<div class="back">
+    <div class="Index">
         @{
             if (currentUser != null)
             {
@@ -35,19 +36,29 @@
 
                 if (currentUser.RoleId == 2)
                 {
-
+                    <h5>Вход с правами супер пользователя</h5>
                 }
-
             }
             else
             {
                 <p>Что-то пошло не так, нет данных...</p>
             }
         }
-
-        <a asp-action="LogOut" asp-controller="Account" asp-anti-forgery="true">
-            <input type="submit" value="Выход из аккаунта" />
-        </a>
+        @{
+            if (currentUser.RoleId == 2)
+            {
+                <div>
+                    <a asp-controller="Users" asp-action="Index">
+                        <input type="submit" value="Администрирование пользователей"/>
+                    </a>
+                </div>
+            }
+        }
+        <div>
+            <a asp-action="LogOut" asp-controller="Account">
+                <input type="submit" value="Выход из аккаунта"/>
+            </a>
+        </div>
     </div>
 </div>
 
