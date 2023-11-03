@@ -1,0 +1,60 @@
+﻿@model ASP_MVC_Project.Models.Airticket
+
+@{
+    ViewData["Title"] = "Purchase";
+}
+
+<div class="header">
+    <h1>Purchase page</h1>
+</div>
+
+<div class="back">
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Purchase">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-group">
+                    <label asp-for="User.Name" class="control-label"></label>
+                    <input asp-for="User.Name" asp-value="User.Name" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="User.Surname" class="control-label"></label>
+                    <input asp-for="User.Surname" asp-value="User.Surname" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="User.DocumentNumber" class="control-label"></label>
+                    <input asp-for="User.DocumentNumber" asp-value="User.DocumentNumber" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Schedule.Date" class="control-label"></label>
+                    <input asp-for="Schedule.Date" asp-value="Schedule.Date" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Schedule.Departure" class="control-label"></label>
+                    <input asp-for="Schedule.Departure" asp-value="Schedule.Departure" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Schedule.Destination" class="control-label"></label>
+                    <input asp-for="Schedule.Destination" asp-value="Schedule.Destination" class="form-control" disabled />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Schedule.Airline" class="control-label"></label>
+                    <input asp-for="Schedule.Airline.Name" asp-value="Schedule.Airline.Name" class="form-control" disabled />
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Confirm" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Booking">Back to Booking</a>
+    </div>
+
+</div>
+
