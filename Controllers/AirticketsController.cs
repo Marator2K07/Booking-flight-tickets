@@ -60,6 +60,36 @@ namespace ASP_MVC_Project.Controllers
                 return View(ticket);
             }
             return NotFound();            
-        }                
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Purchase(int userId, int scheduleId)
+        {
+            var schedule = await _context.Schedules
+                .Include(s => s.Airline)
+                .FirstOrDefaultAsync(m => m.Id == scheduleId);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(m => m.Id == userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            Airticket ticket = new Airticket();
+            ticket.ScheduleId = scheduleId;
+            ticket.UserId = userId;
+            ticket.Schedule = schedule;
+            ticket.User = user;
+
+            _context.Add(ticket);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Booking", "Airtickets");
+        }
     }
 }
