@@ -36,22 +36,30 @@ namespace ASP_MVC_Project.Models
                 new Airline { Id = 4, Name = "Average lines", License = "WASD" }
             );
             modelBuilder.Entity<Schedule>().HasData(
-                new Schedule { Id = 1, Date = DateTime.ParseExact("11/22/2023 12:15",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
-                new Schedule { Id = 2, Date = DateTime.ParseExact("11/23/2023 11:30",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 1 },
-                new Schedule { Id = 3, Date = DateTime.ParseExact("11/24/2023 15:15",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 2 },
-                new Schedule { Id = 4, Date = DateTime.ParseExact("11/25/2023 16:55",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 4 },
-                new Schedule { Id = 5, Date = DateTime.ParseExact("11/26/2023 13:45",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
-                new Schedule { Id = 6, Date = DateTime.ParseExact("11/27/2023 10:10",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
-                new Schedule { Id = 7, Date = DateTime.ParseExact("11/28/2023 15:15",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 2 },
-                new Schedule { Id = 8, Date = DateTime.ParseExact("11/29/2023 20:00",
-                "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 1 }
+                new Schedule { Id = 1, Departure = "Barnaul", Destination = "Moskow",
+                    Date = DateTime.ParseExact("11/22/2023 12:15",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
+                new Schedule { Id = 2, Departure = "Barnaul", Destination = "Krasnoyars", 
+                    Date = DateTime.ParseExact("11/23/2023 11:30",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 1 },
+                new Schedule { Id = 3, Departure = "Novosibirsk", Destination = "Saint Barnaul", 
+                    Date = DateTime.ParseExact("11/24/2023 15:15",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 2 },
+                new Schedule {Id = 4, Departure = "Omsk", Destination = "Novosibirsk",
+                    Date = DateTime.ParseExact("11/25/2023 16:55",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 4 },
+                new Schedule {Id = 5, Departure = "Nizhniy Novgorod", Destination = "Moskow",
+                    Date = DateTime.ParseExact("11/26/2023 13:45",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
+                new Schedule {Id = 6, Departure = "Moscow", Destination = "Novosibirsk",
+                    Date = DateTime.ParseExact("11/27/2023 10:10",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 3 },
+                new Schedule {Id = 7, Departure = "Novosibirsk", Destination = "NoName",
+                    Date = DateTime.ParseExact("11/28/2023 15:15",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 2 },
+                new Schedule {Id = 8, Departure = "Barnaul", Destination = "Ne Baranaul",
+                    Date = DateTime.ParseExact("11/29/2023 20:00",
+                    "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture), AirlineId = 1 }
             );
         }
     }
