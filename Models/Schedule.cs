@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
+        public virtual int AirlineId { get; set; }
+        public virtual Airline Airline { get; set; }
         public virtual ICollection<Airticket> Airtickets { get; set; }
-        public virtual ICollection<Airline> Airlines { get; set; }
     }
 }
