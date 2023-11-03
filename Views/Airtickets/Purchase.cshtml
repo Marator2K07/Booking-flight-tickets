@@ -12,9 +12,12 @@
 
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Purchase">
+            <form asp-action="Purchase" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
+
+                <input name="userId" asp-for="User.Id" asp-value="User.Id" hidden />
+                <input name="scheduleId" asp-for="Schedule.Id" asp-value="Schedule.Id" hidden />
 
                 <div class="form-group">
                     <label asp-for="User.Name" class="control-label"></label>
