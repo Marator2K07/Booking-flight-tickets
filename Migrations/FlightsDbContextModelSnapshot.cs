@@ -38,14 +38,35 @@ namespace ASP_MVC_Project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ScheduleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("ScheduleId");
-
                     b.ToTable("Airlines");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            License = "LKMN",
+                            Name = "S8 Airline"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            License = "QWER",
+                            Name = "Barnaulskie avialinii"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            License = "BGYU",
+                            Name = "Altair avia"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            License = "WASD",
+                            Name = "Average lines"
+                        });
                 });
 
             modelBuilder.Entity("ASP_MVC_Project.Models.Airticket", b =>
@@ -108,12 +129,67 @@ namespace ASP_MVC_Project.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AirlineId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AirlineId");
+
                     b.ToTable("Schedules");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AirlineId = 3,
+                            Date = new DateTime(2023, 11, 22, 12, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AirlineId = 1,
+                            Date = new DateTime(2023, 11, 23, 11, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AirlineId = 2,
+                            Date = new DateTime(2023, 11, 24, 15, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AirlineId = 4,
+                            Date = new DateTime(2023, 11, 25, 16, 55, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AirlineId = 3,
+                            Date = new DateTime(2023, 11, 26, 13, 45, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AirlineId = 3,
+                            Date = new DateTime(2023, 11, 27, 10, 10, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AirlineId = 2,
+                            Date = new DateTime(2023, 11, 28, 15, 15, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AirlineId = 1,
+                            Date = new DateTime(2023, 11, 29, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ASP_MVC_Project.Models.User", b =>
@@ -166,17 +242,6 @@ namespace ASP_MVC_Project.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ASP_MVC_Project.Models.Airline", b =>
-                {
-                    b.HasOne("ASP_MVC_Project.Models.Schedule", "Schedule")
-                        .WithMany("Airlines")
-                        .HasForeignKey("ScheduleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Schedule");
-                });
-
             modelBuilder.Entity("ASP_MVC_Project.Models.Airticket", b =>
                 {
                     b.HasOne("ASP_MVC_Project.Models.Schedule", "Schedule")
@@ -194,6 +259,17 @@ namespace ASP_MVC_Project.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ASP_MVC_Project.Models.Schedule", b =>
+                {
+                    b.HasOne("ASP_MVC_Project.Models.Airline", "Airline")
+                        .WithMany()
+                        .HasForeignKey("AirlineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Airline");
+                });
+
             modelBuilder.Entity("ASP_MVC_Project.Models.User", b =>
                 {
                     b.HasOne("ASP_MVC_Project.Models.Role", "Role")
@@ -207,8 +283,6 @@ namespace ASP_MVC_Project.Migrations
 
             modelBuilder.Entity("ASP_MVC_Project.Models.Schedule", b =>
                 {
-                    b.Navigation("Airlines");
-
                     b.Navigation("Airtickets");
                 });
 
