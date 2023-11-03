@@ -135,6 +135,14 @@ namespace ASP_MVC_Project.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Departure")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Destination")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AirlineId");
@@ -146,49 +154,65 @@ namespace ASP_MVC_Project.Migrations
                         {
                             Id = 1,
                             AirlineId = 3,
-                            Date = new DateTime(2023, 11, 22, 12, 15, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 22, 12, 15, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Barnaul",
+                            Destination = "Moskow"
                         },
                         new
                         {
                             Id = 2,
                             AirlineId = 1,
-                            Date = new DateTime(2023, 11, 23, 11, 30, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 23, 11, 30, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Barnaul",
+                            Destination = "Krasnoyars"
                         },
                         new
                         {
                             Id = 3,
                             AirlineId = 2,
-                            Date = new DateTime(2023, 11, 24, 15, 15, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 24, 15, 15, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Novosibirsk",
+                            Destination = "Saint Barnaul"
                         },
                         new
                         {
                             Id = 4,
                             AirlineId = 4,
-                            Date = new DateTime(2023, 11, 25, 16, 55, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 25, 16, 55, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Omsk",
+                            Destination = "Novosibirsk"
                         },
                         new
                         {
                             Id = 5,
                             AirlineId = 3,
-                            Date = new DateTime(2023, 11, 26, 13, 45, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 26, 13, 45, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Nizhniy Novgorod",
+                            Destination = "Moskow"
                         },
                         new
                         {
                             Id = 6,
                             AirlineId = 3,
-                            Date = new DateTime(2023, 11, 27, 10, 10, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 27, 10, 10, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Moscow",
+                            Destination = "Novosibirsk"
                         },
                         new
                         {
                             Id = 7,
                             AirlineId = 2,
-                            Date = new DateTime(2023, 11, 28, 15, 15, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 28, 15, 15, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Novosibirsk",
+                            Destination = "NoName"
                         },
                         new
                         {
                             Id = 8,
                             AirlineId = 1,
-                            Date = new DateTime(2023, 11, 29, 20, 0, 0, 0, DateTimeKind.Unspecified)
+                            Date = new DateTime(2023, 11, 29, 20, 0, 0, 0, DateTimeKind.Unspecified),
+                            Departure = "Barnaul",
+                            Destination = "Ne Baranaul"
                         });
                 });
 

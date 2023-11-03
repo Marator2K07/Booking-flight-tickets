@@ -47,6 +47,8 @@ namespace ASP_MVC_Project.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Departure = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AirlineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -131,17 +133,17 @@ namespace ASP_MVC_Project.Migrations
 
             migrationBuilder.InsertData(
                 table: "Schedules",
-                columns: new[] { "Id", "AirlineId", "Date" },
+                columns: new[] { "Id", "AirlineId", "Date", "Departure", "Destination" },
                 values: new object[,]
                 {
-                    { 1, 3, new DateTime(2023, 11, 22, 12, 15, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 1, new DateTime(2023, 11, 23, 11, 30, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 2, new DateTime(2023, 11, 24, 15, 15, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 4, new DateTime(2023, 11, 25, 16, 55, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 3, new DateTime(2023, 11, 26, 13, 45, 0, 0, DateTimeKind.Unspecified) },
-                    { 6, 3, new DateTime(2023, 11, 27, 10, 10, 0, 0, DateTimeKind.Unspecified) },
-                    { 7, 2, new DateTime(2023, 11, 28, 15, 15, 0, 0, DateTimeKind.Unspecified) },
-                    { 8, 1, new DateTime(2023, 11, 29, 20, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 3, new DateTime(2023, 11, 22, 12, 15, 0, 0, DateTimeKind.Unspecified), "Barnaul", "Moskow" },
+                    { 2, 1, new DateTime(2023, 11, 23, 11, 30, 0, 0, DateTimeKind.Unspecified), "Barnaul", "Krasnoyars" },
+                    { 3, 2, new DateTime(2023, 11, 24, 15, 15, 0, 0, DateTimeKind.Unspecified), "Novosibirsk", "Saint Barnaul" },
+                    { 4, 4, new DateTime(2023, 11, 25, 16, 55, 0, 0, DateTimeKind.Unspecified), "Omsk", "Novosibirsk" },
+                    { 5, 3, new DateTime(2023, 11, 26, 13, 45, 0, 0, DateTimeKind.Unspecified), "Nizhniy Novgorod", "Moskow" },
+                    { 6, 3, new DateTime(2023, 11, 27, 10, 10, 0, 0, DateTimeKind.Unspecified), "Moscow", "Novosibirsk" },
+                    { 7, 2, new DateTime(2023, 11, 28, 15, 15, 0, 0, DateTimeKind.Unspecified), "Novosibirsk", "NoName" },
+                    { 8, 1, new DateTime(2023, 11, 29, 20, 0, 0, 0, DateTimeKind.Unspecified), "Barnaul", "Ne Baranaul" }
                 });
 
             migrationBuilder.InsertData(
