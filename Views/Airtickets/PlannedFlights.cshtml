@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASP_MVC_Project.Models.Airticket>
+
+@{
+    ViewData["Title"] = "PlannedFlights";
+}
+
+<div class="header">
+    <h1>Your planned flights</h1>
+</div>
+
+<div class="back">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Schedule.Destination)
+            </th>
+        </tr>
+    </thead>
+        @{
+            if (Model.Count() == 0)
+            {
+                <p>No have elements...</p>
+            }
+        }
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.Departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Schedule.Destination)
+            </td>
+            <td>
+                <form asp-action="Delete" method="post">
+                    <div class="form-group">
+                        <input name="ticketId" asp-for="@item.Id" asp-value="User.Id" hidden />
+                        <input type="submit" value="Cancel" class="btn btn-primary" />
+                    </div>
+                </form>
+            </td>                    
+        </tr>
+        }
+    </tbody>
+</table>
+
+</div>
