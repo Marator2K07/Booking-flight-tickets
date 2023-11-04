@@ -89,7 +89,46 @@ namespace ASP_MVC_Project.Controllers
 
             _context.Add(ticket);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Booking", "Airtickets");
+            return RedirectToAction("PlannedFlights", "Airtickets");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PlannedFlights()
+        {
+            var flightsDbContext = _context.Airtickets.
+                Include(a => a.Schedule).
+                Include(a => a.User).
+                Where(a => a.Schedule.Date > DateTime.Now);
+            return View(await flightsDbContext.ToListAsync());
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> FlightHistory()
+        {
+            var flightsDbContext = _context.Airtickets.
+                Include(a => a.Schedule).
+                Include(a => a.User).
+                Where(a => a.Schedule.Date <= DateTime.Now);
+            return View(await flightsDbContext.ToListAsync());
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int ticketId)
+        {
+            if (_context.Airtickets == null)
+            {
+                return Problem("Entity set 'FlightsDbContext.Airtickets'  is null.");
+            }
+            var airticket = await _context.Airtickets.
+                FirstOrDefaultAsync(a => a.Id == ticketId);
+            if (airticket != null)
+            {
+                _context.Airtickets.Remove(airticket);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("PlannedFlights", "Airtickets");
         }
     }
 }
